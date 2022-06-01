@@ -13,6 +13,11 @@ const HouseSchema = Schema({
     // unique: true,
     required: true,
   },
+  description: {
+    type: String,
+    // unique: true,
+    required: true,
+  },
 
   imagePath: {
     type: String,
@@ -20,18 +25,18 @@ const HouseSchema = Schema({
     required: true,
     // trim: true,
   },
-  //   street_address: {
-  //     type: String,
-  //     required: true,
-  //   },
-  //   city: {
-  //     type: String,
-  //     // required: true,
-  //   },
-  //   country: {
-  //     type: String,
-  //     // required: true,
-  //   },
+  street_address: {
+    type: String,
+    required: true,
+  },
+  city: {
+    type: String,
+    // required: true,
+  },
+  country: {
+    type: String,
+    // required: true,
+  },
 });
-const House = mongoose.model("hou", HouseSchema);
+const House = mongoose.model("house", HouseSchema);
 export default House;

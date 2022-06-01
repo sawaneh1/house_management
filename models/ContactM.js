@@ -12,7 +12,7 @@ const ContactSchema = Schema({
     required: true,
   },
 
-  messsage: {
+  message: {
     type: String,
     required: true,
   },

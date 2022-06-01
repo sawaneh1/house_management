@@ -17,8 +17,9 @@ const PaymentSchema = Schema({
     required: true,
   },
   house_id: {
-    type: Number,
-    require: true,
+    type: Schema.Types.ObjectId,
+    ref: "house",
+    // require: true,
   },
 
   amount: {

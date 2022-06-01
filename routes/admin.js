@@ -2,12 +2,19 @@ import express from "express";
 import multer from "multer";
 import HouseM from "../models/HouseM.js";
 // import { Login, register } from "../controllers/UserController.js";
-import { login, signup } from "../controllers/adminController.js";
+import {
+  getadmin,
+  getadmins,
+  login,
+  signup,
+} from "../controllers/adminController.js";
 const router = express.Router();
 
 // router.post("/register", register);
 router.post("/register", signup);
 router.post("/login", login);
+router.get("/admins", getadmins);
+router.get("/admins/:adminId", getadmin);
 // onst router = express.Router();
 // router.post("/uploads", upload);
 const storage = multer.diskStorage({
@@ -20,7 +27,7 @@ const storage = multer.diskStorage({
 });
 // const saveImage
 router.post(
-  "/uploads",
+  "/create_house",
   //   multer().any(),
   multer({ storage }).single("imagePath"),
   async (req, res) => {
@@ -33,6 +40,9 @@ router.post(
       description: req.body.description,
       imagePath: data,
       price: req.body.price,
+      street_address: req.body.street_address,
+      city: req.body.city,
+      country: req.body.country,
     });
 
     // address_id: req.body.address_id,

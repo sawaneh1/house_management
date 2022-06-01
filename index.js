@@ -41,10 +41,17 @@ import jwt from "jsonwebtoken";
 import adminRoutes from "./routes/admin.js";
 import paymentRoutes from "./routes/payment.js";
 import houseRoutes from "./routes/house.js";
+import contactRoute from "./routes/contact.js";
+import path from "path";
+import { fileURLToPath } from "url";
 
 // import User from "./model/userModel.js";
 
 dotenv.config();
+
+const __filename = fileURLToPath(import.meta.url);
+
+const __dirname = path.dirname(__filename);
 
 // import postRoutes from "./routes/posts.js";
 
@@ -52,6 +59,7 @@ const app = express();
 
 app.use(express.json()); // Used to parse JSON bodies
 app.use(express.urlencoded({ extended: false }));
+app.use("/File", express.static(path.join(__dirname, "File")));
 
 const CONNECTION_URL = "mongodb://127.0.0.1:27017/landManagement_second";
 const PORT = process.env.PORT || 5000;
@@ -89,5 +97,4 @@ mongoose
 app.use("/", adminRoutes);
 app.use("/", paymentRoutes);
 app.use("/", houseRoutes);
-// app.use("/", caseRoutes);
-// app.use("/", sendCode);
+app.use("/", contactRoute);

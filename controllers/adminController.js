@@ -25,7 +25,6 @@ export const signup = async (req, res, next) => {
     const newAdmin = new Admin({
       fname,
       lname,
-
       email,
       password,
     });
