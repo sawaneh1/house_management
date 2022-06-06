@@ -2,10 +2,11 @@ import Payment from "../models/PaymentM.js";
 
 export const createPayment = async (req, res, next) => {
   try {
+    console.log("body,,", req.body);
     const paymentData = {
       fname: req.body.fname,
       lname: req.body.lname,
-      price: req.body.price,
+      // price: req.body.price,
       email: req.body.email,
       amount: req.body.amount,
       house_id: req.body.house_id,

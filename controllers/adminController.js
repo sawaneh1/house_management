@@ -3,6 +3,7 @@
 import Admin from "../models/adminM.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+import bcryptjs from "bcryptjs";
 // import roles from "../roles/roles.js";
 
 // async function hashPassword(password) {
@@ -28,7 +29,7 @@ export const signup = async (req, res, next) => {
       email,
       password,
     });
-    newAdmin.password = bcrypt.hashSync(password, 12);
+    // newAdmin.password = bcrypt.hashSync(password, 12);
     if (oldAdmin) {
       return res.status(400).json({ message: "admin already exists" });
     }
@@ -50,21 +51,20 @@ export const login = async (req, res, next) => {
   try {
     const { email, password } = req.body;
     const admin = await Admin.findOne({ email });
-    if (!admin) return res.json("email does not exist");
+    if (!admin) return res.status(404).json("email does not exist");
+
     // const validPassword = await validatePassword(password, admin.password);
-    const validPassword = bcrypt.compare(password, admin.password);
-    if (!validPassword) return next(new Error("Password is not correct"));
-    const accessToken = jwt.sign(
-      { adminId: admin._id },
-      process.env.JWT_SECRET,
-      {
-        expiresIn: "1d",
-      }
-    );
-    await Admin.findByIdAndUpdate(admin._id, { accessToken });
+    // const validPassword = bcryptjs.compare(password, admin.password);
+    console.log("dmin", admin);
+    if (password !== admin.password)
+      return res.status(401).send("password incorrect");
+    const token = jwt.sign({ adminId: admin._id }, process.env.JWT_SECRET, {
+      expiresIn: "1d",
+    });
+    await Admin.findByIdAndUpdate(admin._id, { token });
     res.status(200).json({
       data: admin,
-      accessToken,
+      token,
     });
   } catch (error) {
     next(error);
