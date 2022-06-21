@@ -61,7 +61,7 @@ app.use(express.json()); // Used to parse JSON bodies
 app.use(express.urlencoded({ extended: false }));
 app.use("/File", express.static(path.join(__dirname, "File")));
 
-const CONNECTION_URL = "mongodb://127.0.0.1:27017/landManagement_second";
+const CONNECTION_URL = process.env.MONGODB_URI;
 const PORT = process.env.PORT || 5000;
 app.use(cors());
 
