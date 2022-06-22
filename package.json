@@ -11,7 +11,7 @@
 },
   "scripts": {
   "start": "node index.js",
-  "build": "yarn install && yarn run build"
+  "build": "yarn run build"
   },
   "author": "Sulayman Sawaneh",
   "license": "ISC",
