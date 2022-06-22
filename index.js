@@ -48,7 +48,7 @@ import { fileURLToPath } from "url";
 // import User from "./model/userModel.js";
 // console.log("is : ", process.env);
 
-dotenv.config();
+// dotenv.config();
 
 const __filename = fileURLToPath(import.meta.url);
 
