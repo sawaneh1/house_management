@@ -48,7 +48,7 @@ import { fileURLToPath } from "url";
 // import User from "./model/userModel.js";
 // console.log("is : ", process.env);
 
-// dotenv.config();
+dotenv.config();
 
 const __filename = fileURLToPath(import.meta.url);
 
@@ -64,17 +64,16 @@ app.use("/File", express.static(path.join(__dirname, "File")));
 
 // const CONNECTION_URL =
 //   "mongodb+srv://bubacarr:3973993B@cluster0.0wklubf.mongodb.net/?retryWrites=true&w=majority";
-const PORT = 3000;
+const PORT = process.env.PORT || 5000;
 app.use(cors());
 
 try {
-  app.listen(PORT, () =>
+  app.listen((PORT, "0.0.0.0"), () =>
     console.log(`Server Running on Port: http://localhost:${PORT}`)
   );
 } catch (error) {
   console.log("errr", error);
 }
-
 // app.use(async (req, res, next) => {
 //   if (req.headers["x-access-token"]) {
 //     const accessToken = req.headers["x-access-token"];
