@@ -46,8 +46,9 @@ import path from "path";
 import { fileURLToPath } from "url";
 
 // import User from "./model/userModel.js";
+// console.log("is : ", process.env);
 
-dotenv.config();
+// dotenv.config();
 
 const __filename = fileURLToPath(import.meta.url);
 
@@ -61,8 +62,9 @@ app.use(express.json()); // Used to parse JSON bodies
 app.use(express.urlencoded({ extended: false }));
 app.use("/File", express.static(path.join(__dirname, "File")));
 
-const CONNECTION_URL = process.env.MONGODB_URI;
-const PORT = process.env.PORT || 5000;
+const CONNECTION_URL =
+  "mongodb+srv://bubacarr:3973993B@cluster0.0wklubf.mongodb.net/?retryWrites=true&w=majority";
+const PORT = 3000;
 app.use(cors());
 
 mongoose
