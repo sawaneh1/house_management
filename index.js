@@ -65,11 +65,12 @@ app.use("/File", express.static(path.join(__dirname, "File")));
 // const CONNECTION_URL =
 //   "mongodb+srv://bubacarr:3973993B@cluster0.0wklubf.mongodb.net/?retryWrites=true&w=majority";
 const PORT = process.env.PORT || 5000;
+const hostName = "0.0.0.0";
 app.use(cors());
 
 try {
-  app.listen((PORT, "0.0.0.0"), () =>
-    console.log(`Server Running on Port: http://localhost:${PORT}`)
+  app.listen((PORT, hostName), () =>
+    console.log(`Server Running on Port:${hostName}:${PORT}`)
   );
 } catch (error) {
   console.log("errr", error);

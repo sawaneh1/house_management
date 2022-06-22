@@ -6,10 +6,12 @@
   "type": "module",
   "engines": {
     "node": "14.19.2",
-    "npm": "8.9.0"
+    "npm": "8.9.0",
+    "yarn":"1.22.18"
 },
   "scripts": {
-  "start": "node index.js"
+  "start": "node index.js",
+  "build": "yarn install && yarn run build"
   },
   "author": "Sulayman Sawaneh",
   "license": "ISC",
