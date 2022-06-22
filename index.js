@@ -69,7 +69,7 @@ const hostName = "0.0.0.0";
 app.use(cors());
 
 try {
-  app.listen((PORT, hostName), () =>
+  app.listen(PORT, hostName, () =>
     console.log(`Server Running on Port:${hostName}:${PORT}`)
   );
 } catch (error) {
