@@ -62,19 +62,18 @@ app.use(express.json()); // Used to parse JSON bodies
 app.use(express.urlencoded({ extended: false }));
 app.use("/File", express.static(path.join(__dirname, "File")));
 
-const CONNECTION_URL =
-  "mongodb+srv://bubacarr:3973993B@cluster0.0wklubf.mongodb.net/?retryWrites=true&w=majority";
+// const CONNECTION_URL =
+//   "mongodb+srv://bubacarr:3973993B@cluster0.0wklubf.mongodb.net/?retryWrites=true&w=majority";
 const PORT = 3000;
 app.use(cors());
 
-mongoose
-  .connect(CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() =>
-    app.listen(PORT, () =>
-      console.log(`Server Running on Port: http://localhost:${PORT}`)
-    )
-  )
-  .catch((error) => console.log(`${error} did not connect`));
+try {
+  app.listen(PORT, () =>
+    console.log(`Server Running on Port: http://localhost:${PORT}`)
+  );
+} catch (error) {
+  console.log("errr", error);
+}
 
 // app.use(async (req, res, next) => {
 //   if (req.headers["x-access-token"]) {
