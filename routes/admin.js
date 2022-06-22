@@ -11,7 +11,7 @@ import {
 const router = express.Router();
 
 // router.post("/register", register);
-router.post("/register", signup);
+router.post("/register", multer().any(), signup);
 router.post("/login", login);
 router.get("/admins", getadmins);
 router.get("/admins/:adminId", getadmin);
