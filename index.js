@@ -66,6 +66,8 @@ app.use("/File", express.static(path.join(__dirname, "File")));
 //   "mongodb+srv://bubacarr:3973993B@cluster0.0wklubf.mongodb.net/?retryWrites=true&w=majority";
 const PORT = process.env.PORT || 5000;
 const hostName = "0.0.0.0";
+
+//
 app.use(cors());
 
 try {
