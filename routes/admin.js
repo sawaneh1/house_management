@@ -8,13 +8,11 @@ import {
   login,
   signup,
 } from "../controllers/adminController.js";
+import userAuth from "../middleware/Auth/user.js";
 const router = express.Router();
 
-// router.post("/register", register);
-router.post("/register", signup);
-router.post("/login", login);
 router.get("/admins", getadmins);
-router.get("/admins/:adminId", getadmin);
+router.get("/admins/:adminId", userAuth, getadmin);
 // onst router = express.Router();
 // router.post("/uploads", upload);
 const storage = multer.diskStorage({
@@ -29,6 +27,7 @@ const storage = multer.diskStorage({
 router.post(
   "/create_house",
   //   multer().any(),
+  userAuth,
   multer({ storage }).single("imagePath"),
   async (req, res) => {
     // console.log("reqqq", req.body.toString());

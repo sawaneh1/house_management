@@ -6,13 +6,14 @@ import {
   getHouse,
   updateHouse,
 } from "../controllers/HouseController.js";
+import userAuth from "../middleware/Auth/user.js";
 
 const router = express.Router();
 
 router.get("/houses", getAllHouses);
 router.get("/house/:houseId", getHouse);
-router.put("/house/:houseId", multer().any(), updateHouse);
-router.delete("/house/:houseId", DeleteHouse);
+router.put("/house/:houseId", userAuth, multer().any(), updateHouse);
+router.delete("/house/:houseId", userAuth, DeleteHouse);
 export default router;
 
 // router.put(
