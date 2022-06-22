@@ -10,8 +10,7 @@
     "yarn":"1.22.18"
 },
   "scripts": {
-  "start": "node index.js",
-  "build": "yarn run build"
+  "start": "node index.js"
   },
   "author": "Sulayman Sawaneh",
   "license": "ISC",
