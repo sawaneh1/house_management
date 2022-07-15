@@ -12,7 +12,7 @@ import userAuth from "../middleware/Auth/user.js";
 const router = express.Router();
 
 router.get("/admins", getadmins);
-router.get("/admins/:adminId", userAuth, getadmin);
+router.get("/admins/:adminId", getadmin);
 // onst router = express.Router();
 // router.post("/uploads", upload);
 const storage = multer.diskStorage({

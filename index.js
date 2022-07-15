@@ -108,3 +108,6 @@ app.use("/", adminRoutes);
 app.use("/", paymentRoutes);
 app.use("/", houseRoutes);
 app.use("/", contactRoute);
+app.use("/", (req, res) => {
+  res.send("working");
+});
